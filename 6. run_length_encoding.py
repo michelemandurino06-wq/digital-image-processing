@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon May 11 16:31:29 2026
-
-@author: rober
-"""
-
 from PIL import Image
 
 # 1. CHIEDI IL PERCORSO (Incolla qui il percorso della tua immagine)
