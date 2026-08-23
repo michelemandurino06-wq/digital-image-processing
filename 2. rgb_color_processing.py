@@ -35,7 +35,7 @@ def equalizza_rgb(percorso_immagine):
     return img_equalizzata_hsv.convert('RGB')
 
 # --- INCOLLA QUI IL PERCORSO ---
-percorso_da_testare = r"C:\Users\rober\OneDrive\Desktop\castello.jpg"
+percorso_da_testare = r"C:..."
 
 try:
     risultato = equalizza_rgb(percorso_da_testare)
