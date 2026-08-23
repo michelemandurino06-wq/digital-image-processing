@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # 1. Carica l'immagine a colori
-img = cv2.imread('C:/Users/rober/OneDrive/Desktop/dolomiti.png')
+img = cv2.imread('...')
 
 # Verifichiamo che l'immagine sia stata caricata correttamente
 if img is None:
