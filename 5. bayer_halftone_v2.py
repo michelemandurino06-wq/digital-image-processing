@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon May  4 10:58:24 2026
-
-@author: rober
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -62,4 +56,4 @@ def process_and_plot(image_path):
     plt.show()
 
 # Incolla qui il tuo percorso
-process_and_plot("C:/Users/rober/OneDrive/Desktop/corridoio_scuro.jpg")
+process_and_plot("C:...")
