@@ -41,7 +41,7 @@ def apply_bayer_halftone(image_path, output_path):
 
 # --- CONFIGURAZIONE ---
 # Incolla qui il percorso della tua immagine
-input_file = "C:/Users/rober/OneDrive/Desktop/corridoio_scuro.jpg"
+input_file = "C:..."
 output_file = "risultato_halftone.png"
 
 apply_bayer_halftone(input_file, output_file)
