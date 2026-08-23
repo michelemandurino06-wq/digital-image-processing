@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Apr 24 10:33:20 2026
-
-@author: rober
-"""
-
 import numpy as np
 from PIL import Image
 import os
