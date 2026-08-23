@@ -38,4 +38,18 @@ cd Digital-Image-Processing
 pip install -r requirements.txt
 
 # Run any script directly (example: Bayer dithering v1)
-python "4. bayer_halftone_v1.py"
+python 04_bayer_halftone_v1.py
+```
+---
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+This project is licensed under the terms of the **MIT License**. 
+
+You are free to:
+* **Use**: Use the code for private, academic, or commercial purposes.
+* **Modify**: Change and adapt the algorithms.
+* **Distribute**: Share and publish the original or modified code.
+
+See the full [LICENSE](LICENSE) file for legal details.
