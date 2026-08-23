@@ -29,12 +29,13 @@ This repository provides from-scratch implementations and comparative benchmarks
 
 ## Getting Started
 
+```bash
 # Clone the repository
-git clone https://github.com/michelemandurino06-wq/Digital-Image-Processing.git
+git clone [https://github.com/michelemandurino06-wq/Digital-Image-Processing.git](https://github.com/michelemandurino06-wq/Digital-Image-Processing.git)
 cd Digital-Image-Processing
 
 # Install required dependencies
 pip install -r requirements.txt
 
-# Run any script directly (example: Bayer dithering)
+# Run any script directly (example: Bayer dithering v1)
 python "4. bayer_halftone_v1.py"
