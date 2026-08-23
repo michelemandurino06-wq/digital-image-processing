@@ -29,13 +29,12 @@ This repository provides from-scratch implementations and comparative benchmarks
 
 ## Getting Started
 
-```bash
 # Clone the repository
-git clone [https://github.com/your-username/image-processing-pipeline.git](https://github.com/your-username/image-processing-pipeline.git)
-cd image-processing-pipeline
+git clone https://github.com/michelemandurino06-wq/Digital-Image-Processing.git
+cd Digital-Image-Processing
 
 # Install required dependencies
 pip install -r requirements.txt
 
-# Run the pipeline
-python main.py --input assets/sample.png --mode halftone --method bayer --matrix 4
+# Run any script directly (example: Bayer dithering)
+python "4. bayer_halftone_v1.py"
