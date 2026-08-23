@@ -26,7 +26,7 @@ def equalizza_istogramma(percorso_immagine):
 
 # --- INCOLLA QUI SOTTO ---
 # Premi tasto destro sul file -> "Copia come percorso" -> Incolla tra le virgolette
-percorso_da_testare = r"C:\Users\rober\OneDrive\Desktop\corridoio_scuro.jpg"
+percorso_da_testare = r"C:..."
 
 try:
     risultato = equalizza_istogramma(percorso_da_testare)
