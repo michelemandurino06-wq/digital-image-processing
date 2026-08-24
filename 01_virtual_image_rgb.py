@@ -2,36 +2,36 @@
 import cv2
 import numpy as np
 
-# 1. Carica l'immagine a colori
+# 1. Load the color image
 img = cv2.imread('...')
 
-# Verifichiamo che l'immagine sia stata caricata correttamente
+# Verify that the image has been correctly loaded
 if img is None:
-    print("Errore: Immagine non trovata.")
+    print("Error: Image not found.")
 else:
-    # 2. Dividi l'immagine nei tre canali
-    # Attenzione: l'ordine in OpenCV è BGR (Blu, Verde, Rosso)
+    # 2. Split the image into three channels
+    # Note: OpenCV channel order is BGR (Blue, Green, Red)
     b, g, r = cv2.split(img)
 
-    # --- OPZIONE 1: Salva i canali come immagini in scala di grigi ---
-    # In queste immagini, il bianco rappresenta la massima intensità del canale
-    cv2.imwrite('canale_rosso_gray.png', r)
-    cv2.imwrite('canale_verde_gray.png', g)
-    cv2.imwrite('canale_blu_gray.png', b)
+    # --- OPTION 1: Save channels as grayscale ---
+    # In these images, white represents the maximum intensity of the channel
+    cv2.imwrite('channel_red_gray.png', r)
+    cv2.imwrite('channel_green_gray.png', g)
+    cv2.imwrite('channel_blue_gray.png', b)
 
-    # --- OPZIONE 2: Salva i canali mantenendo il colore visivo ---
-    # Creiamo una matrice di zeri della stessa dimensione di un canale
+    # --- OPTION 2: Save channels while preserving color visibility ---
+    # Create a zero matrix with the same dimension as a channel
     zeros = np.zeros_like(b)
 
-    # Uniamo i canali mettendo a zero quelli che non ci servono
-    # Formato cv2.merge: [Blu, Verde, Rosso]
-    img_rosso = cv2.merge([zeros, zeros, r])
-    img_verde = cv2.merge([zeros, g, zeros])
-    img_blu   = cv2.merge([b, zeros, zeros])
+    # Merge channels by zeroing out unused channels
+    # Format for cv2.merge: [Blue, Green, Red]
+    img_red = cv2.merge([zeros, zeros, r])
+    img_green = cv2.merge([zeros, g, zeros])
+    img_blue  = cv2.merge([b, zeros, zeros])
 
     # Salva le immagini colorate
-    cv2.imwrite('solo_rosso.png', img_rosso)
-    cv2.imwrite('solo_verde.png', img_verde)
-    cv2.imwrite('solo_blu.png', img_blu)
+    cv2.imwrite('just_red.png', img_red)
+    cv2.imwrite('just_green.png', img_green)
+    cv2.imwrite('just_blue.png', img_blue)
 
-    print("Elaborazione completata. I file sono stati salvati.")
+    print("Processing complete. Files have been saved.")
