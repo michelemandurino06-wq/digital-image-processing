@@ -1,33 +1,33 @@
 # -*- coding: utf-8 -*-
 from PIL import Image
 
-# 1. CHIEDI IL PERCORSO (Incolla qui il percorso della tua immagine)
-percorso = input("Trascina qui l'immagine o scrivi il percorso: ").strip().replace('"', '')
+# 1. GET THE PATH (Paste the path to your image here)
+image_path = input("Drag the image here or enter path: ").strip().replace('"', '')
 
-# 2. APRI E TRASFORMA IN LISTA DI NUMERI
-img = Image.open(percorso).convert('L')
-pixel_originali = list(img.getdata())
+# 2. OPEN AND CONVERT TO LIST OF VALUES
+img = Image.open(image_path).convert('L')
+original_pixels = list(img.getdata())
 
-# 3. COMPRESSIONE RLE (Logica base)
-dati_compressi = []
-if pixel_originali:
-    pixel_precedente = pixel_originali[0]
-    contatore = 0
+# 3. RLE COMPRESSION
+compressed_data = []
+if original_pixels:
+    previous_pixel = original_pixels[0]
+    counter = 0
     
-    for pixel in pixel_originali:
-        if pixel == pixel_precedente:
-            contatore += 1
+    for pixel in original_pixels:
+        if pixel == previous_pixel:
+            counter += 1
         else:
-            dati_compressi.append((contatore, pixel_precedente))
-            pixel_precedente = pixel
-            contatore = 1
+            compressed_data.append((counter, previous_pixel))
+            previous_pixel = pixel
+            counter = 1
     
-    # Salva l'ultimo gruppo
-    dati_compressi.append((contatore, pixel_precedente))
+    # Save the last run
+    compressed_data.append((counter, previous_pixel))
 
-# 4. MOSTRA IL RISULTATO
-print(f"\nPixel originali: {len(pixel_originali)}")
-print(f"Coppie RLE create: {len(dati_compressi)}")
+# 4. DISPLAY RESULTS
+print(f"\nOriginal pixels: {len(original_pixels)}")
+print(f"RLE pairs created: {len(compressed_data)}")
 
-# Esempio visivo di cosa è successo:
-print(f"\nPrimi 5 gruppi (Conteggio, Colore): {dati_compressi[:5]}")
+# Visual preview of the output
+print(f"\nFirst 5 runs (Count, Color): {compressed_data[:5]}")
