@@ -3,45 +3,45 @@ import numpy as np
 from PIL import Image
 import os
 
-def equalizza_rgb(percorso_immagine):
-    # 1. Pulizia percorso e apertura immagine
-    percorso_pulito = percorso_immagine.strip().replace('"', '').replace("'", "")
-    if not os.path.exists(percorso_pulito):
-        raise FileNotFoundError(f"File non trovato: {percorso_pulito}")
+def equalize_rgb(image_path):
+    # 1. Clean path and open image
+    clean_path = image_path.strip().replace('"', '').replace("'", "")
+    if not os.path.exists(clean_path):
+        raise FileNotFoundError(f"File not found: {clean_path}")
 
-    img_rgb = Image.open(percorso_pulito).convert('RGB')
+    img_rgb = Image.open(clean_path).convert('RGB')
     
-    # 2. Convertiamo in HSV per isolare la luminosità (Value)
+    # 2. Convert to HSV to isolate luminosity (Value)
     img_hsv = img_rgb.convert('HSV')
     hsv_array = np.array(img_hsv)
 
-    # Il canale V (Value/Luminosità) è l'ultimo: hsv_array[:, :, 2]
+    # The V channel (Value/Brightness) is the last one: hsv_array[:, :, 2]
     v_channel = hsv_array[:, :, 2]
 
-    # 3. Calcolo Istogramma e CDF solo sul canale V
-    istogramma, _ = np.histogram(v_channel.flatten(), bins=256, range=[0, 256])
-    cdf = istogramma.cumsum()
+    # 3. Compute Histogram and CDF on the V channel only
+    histogram, _ = np.histogram(v_channel.flatten(), bins=256, range=[0, 256])
+    cdf = histogram.cumsum()
 
-    # 4. Normalizzazione della CDF
+    # 4. CDF Normalization
     cdf_mask = np.ma.masked_equal(cdf, 0)
     cdf_mask = (cdf_mask - cdf_mask.min()) * 255 / (cdf_mask.max() - cdf_mask.min())
     cdf_final = np.ma.filled(cdf_mask, 0).astype('uint8')
 
-    # 5. Applichiamo l'equalizzazione solo al canale V
+    # 5. Apply equalization to the V channel only
     hsv_array[:, :, 2] = cdf_final[v_channel]
 
-    # 6. Riconversione in RGB
-    img_equalizzata_hsv = Image.fromarray(hsv_array, mode='HSV')
-    return img_equalizzata_hsv.convert('RGB')
+    # 6. Convert back to RGB
+    equalized_img_hsv = Image.fromarray(hsv_array, mode='HSV')
+    return equalized_img_hsv.convert('RGB')
 
-# --- INCOLLA QUI IL PERCORSO ---
-percorso_da_testare = r"C:..."
+# --- PASTE PATH HERE ---
+test_image_path = r"C:..."
 
 try:
-    risultato = equalizza_rgb(percorso_da_testare)
-    risultato.show()
-    # Salvataggio facoltativo
-    # risultato.save("risultato_rgb.png")
-    print("Successo! Contrasto colore ottimizzato.")
+    result = equalize_rgb(test_image_path)
+    result.show()
+    # Optional save
+    # result.save("rgb_result.png")
+    print("Success! Color contrast optimized.")
 except Exception as e:
     print(f"ERRORE: {e}")
